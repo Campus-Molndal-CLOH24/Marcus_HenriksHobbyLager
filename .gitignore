@@ -22,6 +22,7 @@
 **/.idea/**/sqlDataSources.xml
 **/.idea/**/dynamic.xml
 
+
 # Rider
 # Rider auto-generates .iml files, and contentModel.xml
 **/.idea/**/*.iml
@@ -39,3 +40,9 @@ _UpgradeReport_Files/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+#Antons filer
+**/.idea/**/.name
+**/.idea/**/indexLayout.xml
+**/.idea/**/vcs.xml
+**/.idea/**
