@@ -1,22 +1,11 @@
-﻿using RefactoringExercise.Interfaces;
+﻿using RefactoringExercise;
+using RefactoringExercise.Interfaces;
 
 namespace HenriksHobbyLager.Repositories
 {
-    internal class ProductRepository : IRepository<T>
+    internal class ProductRepository : IRepository<Product>
     {
-        // Remove to another class (Later)
-        public class Product
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public decimal Price { get; set; }
-            public int Stock { get; set; }
-            public string Category { get; set; }
-            public DateTime Created { get; set; }
-            public DateTime? LastUpdated { get; set; }  // Frågetecknet är för att jag är osäker på datumet
-        }
-
-        public void Add(T entity)
+        public void Add(Product entity)
         {
             throw new NotImplementedException();
         }
@@ -26,27 +15,24 @@ namespace HenriksHobbyLager.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<Product> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public T GetById(int id)
+        public Product GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> Search(Func<T, bool> predicate)
+        public IEnumerable<Product> Search(Func<Product, bool> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(T entity)
+        public void Update(Product entity)
         {
             throw new NotImplementedException();
         }
-
-      
-
     }
 }
