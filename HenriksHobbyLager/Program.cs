@@ -35,25 +35,9 @@ var anka = new Product
     men den fungerar! Och det är huvudsaken... right?
 */
 using HenriksHobbyLager.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace RefactoringExercise
 {
-    
-    
-
-    public interface IProductFacade
-    {
-        IEnumerable<Product> GetAllProducts();
-        Product GetProduct(int id);
-        void CreateProduct(Product product);
-        void UpdateProduct(Product product);
-        void DeleteProduct(int id);
-        IEnumerable<Product> SearchProducts(string searchTerm);
-    }
-
     // Min fina produktklass! 
     // Lade till Created och LastUpdated för att det såg proffsigt ut
     public class Product
@@ -71,7 +55,7 @@ namespace RefactoringExercise
     {
         // Min fantastiska databas! Fungerar perfekt så länge datorn är igång
         private static List<Product> _products = new List<Product>();
-        
+
         // Räknare för ID. Börjar på 1 för att 0 känns så negativt
         private static int _nextId = 1;
 
@@ -101,24 +85,24 @@ namespace RefactoringExercise
         private static void AddProduct()
         {
             Console.WriteLine("=== Lägg till ny produkt ===");
-            
+
             Console.Write("Namn: ");
             var name = Console.ReadLine();
-            
+
             Console.Write("Pris: ");
             if (!decimal.TryParse(Console.ReadLine(), out decimal price))
             {
                 Console.WriteLine("Ogiltigt pris! Använd punkt istället för komma (lärde mig den hårda vägen)");
                 return;
             }
-            
+
             Console.Write("Antal i lager: ");
             if (!int.TryParse(Console.ReadLine(), out int stock))
             {
                 Console.WriteLine("Ogiltig lagermängd! Hela tal endast (kan inte sälja halva helikoptrar)");
                 return;
             }
-            
+
             Console.Write("Kategori: ");
             var category = Console.ReadLine();
 
@@ -208,8 +192,8 @@ namespace RefactoringExercise
             var searchTerm = Console.ReadLine().ToLower();
 
             // LINQ igen! Kollar både namn och kategori
-            var results = _products.Where(p => 
-                p.Name.ToLower().Contains(searchTerm) || 
+            var results = _products.Where(p =>
+                p.Name.ToLower().Contains(searchTerm) ||
                 p.Category.ToLower().Contains(searchTerm)
             ).ToList();
 
