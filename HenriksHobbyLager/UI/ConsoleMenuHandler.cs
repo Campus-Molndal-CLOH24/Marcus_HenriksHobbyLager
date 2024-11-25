@@ -24,7 +24,6 @@ namespace HenriksHobbyLager.UI
                 switch (choice)
                 {
                     case "1":
-                        ShowAllProducts();
                         //productFacade.GetAllProducts(); 
                         break;
                     case "2":
