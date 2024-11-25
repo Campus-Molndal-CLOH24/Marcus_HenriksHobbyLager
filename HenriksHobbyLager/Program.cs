@@ -34,6 +34,7 @@ var anka = new Product
     PS. Om någon hittar det här i framtiden: Jag vet att koden kunde varit snyggare, 
     men den fungerar! Och det är huvudsaken... right?
 */
+using HenriksHobbyLager.Facades;
 using HenriksHobbyLager.UI;
 
 namespace RefactoringExercise
@@ -53,6 +54,7 @@ namespace RefactoringExercise
 
     class Program
     {
+        
         // Min fantastiska databas! Fungerar perfekt så länge datorn är igång
         private static List<Product> _products = new List<Product>();
 
@@ -61,7 +63,9 @@ namespace RefactoringExercise
 
         static void Main(string[] args)
         {
-            ConsoleMenuHandler.RunMenu();
+            ProductFacade _productFacade = new ProductFacade();
+            ConsoleMenuHandler _consoleMenuHandler = new ConsoleMenuHandler();
+            ConsoleMenuHandler.RunMenu(_productFacade);
         }
 
         // Visar alla produkter som finns i "databasen"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HenriksHobbyLager.Facades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace HenriksHobbyLager.UI
 {
-    internal static class ConsoleMenuHandler
+    internal class ConsoleMenuHandler
     {
-        public static void RunMenu()
+        public static void RunMenu(ProductFacade productFacade)
         {
             // Huvudloopen - Stäng inte av programmet, då försvinner allt!
             while (true)
@@ -28,19 +29,19 @@ namespace HenriksHobbyLager.UI
                 switch (choice)
                 {
                     case "1":
-                        //ShowAllProducts(); 
+                        //productFacade.GetAllProducts(); 
                         break;
                     case "2":
-                        //AddProduct();
+                        //productFacade.CreateProduct();
                         break;
                     case "3":
-                        //UpdateProduct();
+                        //productFacade.UpdateProduct();
                         break;
                     case "4":
-                        //DeleteProduct();
+                        //productFacade.DeleteProduct();
                         break;
                     case "5":
-                        //SearchProducts();
+                        //productFacade.SearchProducts();
                         break;
                     case "6":
                         return;  // OBS! All data försvinner om du väljer denna!
