@@ -1,43 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HenriksHobbyLager.Interfaces;
+﻿using HenriksHobbyLager.Interfaces;
 using RefactoringExercise;
+using RefactoringExercise.Interfaces;
 
 namespace HenriksHobbyLager.Facades
 {
     internal class ProductFacade : IProductFacade
     {
+        private IRepository<Product> _repository;
+        public ProductFacade(IRepository<Product> repository)
+        {
+            _repository = repository;
+        }
         public void CreateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _repository.Add(product);
         }
 
         public void DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id);
         }
 
         public IEnumerable<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll();
         }
 
         public Product GetProduct(int id)
         {
-            throw new NotImplementedException();
+            return _repository.GetById(id);
         }
 
         public IEnumerable<Product> SearchProducts(string searchTerm)
         {
-            throw new NotImplementedException();
+            return _repository.Search(product =>
+                product.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                product.Category.Contains(searchTerm, StringComparison.OrdinalIgnoreCase));
         }
 
         public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _repository.Update(product);
         }
     }
 }

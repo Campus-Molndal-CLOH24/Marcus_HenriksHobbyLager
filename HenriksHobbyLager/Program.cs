@@ -35,7 +35,10 @@ var anka = new Product
     men den fungerar! Och det är huvudsaken... right?
 */
 using HenriksHobbyLager.Facades;
+using HenriksHobbyLager.Interfaces;
+using HenriksHobbyLager.Repositories;
 using HenriksHobbyLager.UI;
+using RefactoringExercise.Interfaces;
 
 namespace RefactoringExercise
 {
@@ -54,7 +57,7 @@ namespace RefactoringExercise
 
     class Program
     {
-        
+
         // Min fantastiska databas! Fungerar perfekt så länge datorn är igång
         private static List<Product> _products = new List<Product>();
 
@@ -63,7 +66,8 @@ namespace RefactoringExercise
 
         static void Main(string[] args)
         {
-            ProductFacade _productFacade = new ProductFacade();
+            IRepository<Product> _repository = new ProductRepository();
+            IProductFacade _productFacade = new ProductFacade(_repository);
             ConsoleMenuHandler _consoleMenuHandler = new ConsoleMenuHandler();
             ConsoleMenuHandler.RunMenu(_productFacade);
         }
